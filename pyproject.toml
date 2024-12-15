@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "mlops-project-sarat1102-christellezarka"
+version = "0.1.0"
+description = ""
+authors = ["Sara Tawm <saratawm@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mlops_project_sarat1102_christellezarka", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pandas = "^2.2.3"
+numpy = "^2.2.0"
+scikit-learn = "^1.6.0"
+omegaconf = "^2.3.0"
+pydantic = "^2.10.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+ [tool.poetry.scripts]
+ mlops_project = "mlops_project_sarat1102_christellezarka.main:main"

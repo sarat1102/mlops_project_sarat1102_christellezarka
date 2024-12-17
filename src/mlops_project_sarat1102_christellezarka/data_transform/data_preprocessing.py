@@ -3,7 +3,8 @@ from .base_transformer import DataTransformer
 
 
 class DataPreprocessing(DataTransformer):
-    def transform(self, data: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def transform(data: pd.DataFrame) -> pd.DataFrame:
         """
         Preprocess the data
         :param data: The dataframe
@@ -21,5 +22,6 @@ class DataPreprocessing(DataTransformer):
         
         # Preprocessing categorical data using One-Hot Encoding
         data = pd.get_dummies(data, columns=categorical_columns, drop_first=True)
+        data = data.apply(pd.to_numeric)
 
         return data

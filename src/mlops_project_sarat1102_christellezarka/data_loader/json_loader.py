@@ -5,6 +5,7 @@ from .base_loader import DataLoader
 
 
 class JSONLoader(DataLoader):
+    """A data loader for loading JSON files."""
     def load_data(self, file_path: str)-> pd.DataFrame:
         """
         Load data from a JSON file.

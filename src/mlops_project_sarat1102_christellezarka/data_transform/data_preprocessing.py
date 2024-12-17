@@ -3,14 +3,17 @@ from .base_transformer import DataTransformer
 
 
 class DataPreprocessing(DataTransformer):
+    """A transformer that preprocess the data."""
     @staticmethod
     def transform(data: pd.DataFrame) -> pd.DataFrame:
-        """
-        Preprocess the data
-        :param data: The dataframe
-        :return: The dataframe preprocessed
-        """
+        """Transforms to clean the input data.
 
+        Args:
+            data (pd.DataFrame): The input data to transform.
+
+        Returns:
+            pd.DataFrame: The transformed cleaned data.
+        """
         """Remove duplicate rows and rows with missing values
         from the DataFrame."""
         data = data.drop_duplicates()

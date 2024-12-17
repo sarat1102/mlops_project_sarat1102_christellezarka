@@ -1,11 +1,17 @@
 import pandas as pd
 from .base_model import Model
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 
 
 class LogisticRegressionModel(Model):
+    """A lositic regression model for training and prediction."""
     def __init__(self, **kwargs):
+        """
+        Initializes the LogisticRegression with the given parameters.
+
+        Args:
+            **kwargs: Arbitrary keyword arguments passed to the LogiticRegression.
+        """
         self.model = LogisticRegression(**kwargs)
         
     def train(self, X: pd.DataFrame, y: pd.Series) -> None:

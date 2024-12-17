@@ -1,11 +1,16 @@
 import pandas as pd
 from .base_model import Model
 from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-
 
 class SVCModel(Model):
+    """A svc model for training and prediction."""
     def __init__(self, **kwargs):
+        """
+        Initializes the SVC with the given parameters.
+
+        Args:
+            **kwargs: Arbitrary keyword arguments passed to the SVC.
+        """
         self.model = SVC(**kwargs)
         
     def train(self, X: pd.DataFrame, y: pd.Series) -> None:

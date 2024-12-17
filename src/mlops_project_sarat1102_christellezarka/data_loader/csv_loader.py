@@ -4,6 +4,7 @@ from .base_loader import DataLoader
 
 
 class CSVLoader(DataLoader):
+    """A data loader for loading CSV files."""
     def load_data(self, file_path: str)-> pd.DataFrame:
         """
         Load data from a CSV file.

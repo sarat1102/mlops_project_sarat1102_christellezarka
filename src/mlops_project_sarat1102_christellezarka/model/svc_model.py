@@ -9,13 +9,13 @@ class SVCModel(Model):
         self.model = SVC(**kwargs)
         
     def train(self, X: pd.DataFrame, y: pd.Series) -> None:
-        self.model.fit(X, y)
         """
         Train the SVC model on the provided data.
         Args:
             X(pd.DataFrame): A pandas DataFrame containing the training data.
             y(pd.Series): A pandas Series containing the labels of the training data.
         """
+        self.model.fit(X, y)
         
     def predict(self, X: pd.DataFrame) -> pd.Series:
         """

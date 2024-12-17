@@ -4,6 +4,7 @@ import pandas as pd
 
 class DataTransformer(ABC):
     """Abstract base class for data transformers."""
+
     @abstractmethod
     def transform(self, data: pd.DataFrame) -> pd.DataFrame:
         """Transforms the input data.

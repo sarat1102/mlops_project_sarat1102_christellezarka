@@ -2,10 +2,13 @@
 from .csv_loader import CSVLoader
 from .json_loader import JSONLoader
 from .base_loader import DataLoader
+
+
 class DataLoaderFactory:
     """Factory class to create data loader instances based on the file type."""
+
     @staticmethod
-    def get_data_loader(file_type: str)-> DataLoader:
+    def get_data_loader(file_type: str) -> DataLoader:
         """Returns an instance of a data loader based on the provided file type.
 
         Args:

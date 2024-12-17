@@ -30,7 +30,7 @@ class DataLoaderConfig(BaseModel):
         if value not in {"csv", "json"}:
             raise ValueError("file_type must be 'csv' or 'json'")
         return value
-    
+
 
 class TransformationConfig(BaseModel):
     """Configuration for the data transformation.
@@ -60,6 +60,7 @@ class TransformationConfig(BaseModel):
             raise ValueError("scaling_method must be 'standard' or 'minmax'")
         return value
 
+
 class ModelConfig(BaseModel):
     """Configuration for the model.
 
@@ -85,19 +86,23 @@ class ModelConfig(BaseModel):
         if value not in {"logistic", "svc"}:
             raise ValueError("model type must be 'logistic' or 'svc'")
         return value
+
+
 class Config(BaseModel):
     """Overall configuration for the pipeline.
 
     Attributes:
         data_loader (DataLoaderConfig): Configuration for the data loader.
+        transformation (TransformationConfig): Configuration for the data transformer.
         model (ModelConfig): Configuration for the model.
     """
+
     data_loader: DataLoaderConfig
     transformation: TransformationConfig
     model: ModelConfig
 
 
-def load_config(config_path: str)-> Config:
+def load_config(config_path: str) -> Config:
     raw_config = OmegaConf.load(config_path)
     config_dict = OmegaConf.to_container(raw_config, resolve=True)
-    return Config(**config_dict)
+    return Config(**config_dict)  # type: ignore

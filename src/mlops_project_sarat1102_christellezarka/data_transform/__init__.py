@@ -4,5 +4,9 @@ from .minmax_scaler import MinMaxScalerTransformer
 from .standard_scaler import StandardScalerTransformer
 
 
-__all__ = ["StandardScalerTransformer", "MinMaxScalerTransformer","DataPreprocessing", "TransformerFactory"]
-
+__all__ = [
+    "StandardScalerTransformer",
+    "MinMaxScalerTransformer",
+    "DataPreprocessing",
+    "TransformerFactory",
+]

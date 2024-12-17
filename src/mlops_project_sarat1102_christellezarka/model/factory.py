@@ -2,8 +2,10 @@ from .logistic_model import LogisticRegressionModel
 from .svc_model import SVCModel
 from .base_model import Model
 
+
 class ModelFactory:
     """Factory class to create model instances based on the model type."""
+
     @staticmethod
     def get_model(model_type: str) -> Model:
         """Returns an instance of a model based on the provided model type.

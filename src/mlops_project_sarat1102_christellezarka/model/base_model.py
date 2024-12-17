@@ -4,6 +4,7 @@ import pandas as pd
 
 class Model(ABC):
     """Abstract base class for models."""
+
     @abstractmethod
     def train(self, X: pd.DataFrame, y: pd.Series) -> None:
         """Trains the model on the provided data.
@@ -13,7 +14,7 @@ class Model(ABC):
             y (pd.Series): The target values for training.
         """
         pass
-    
+
     @abstractmethod
     def predict(self, X: pd.DataFrame) -> pd.Series:
         """Predicts the target values using the model.

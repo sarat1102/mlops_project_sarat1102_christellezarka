@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from .base_transformer import DataTransformer
 
+
 class StandardScalerTransformer(DataTransformer):
     """A transformer that scales data using Standard scaling (z-score normalization)."""
 

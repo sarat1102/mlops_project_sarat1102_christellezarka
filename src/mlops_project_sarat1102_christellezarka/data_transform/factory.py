@@ -3,6 +3,7 @@ from .base_transformer import DataTransformer
 from .minmax_scaler import MinMaxScalerTransformer
 from .standard_scaler import StandardScalerTransformer
 
+
 class TransformerFactory:
     """Factory class to create transformer instances based on the scaling method."""
 

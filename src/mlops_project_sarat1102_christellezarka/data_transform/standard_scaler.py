@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from .base_transformer import DataTransformer
+from loguru import logger
 
 
 class StandardScalerTransformer(DataTransformer):
@@ -15,6 +16,12 @@ class StandardScalerTransformer(DataTransformer):
         Returns:
             pd.DataFrame: The transformed data with standardized values.
         """
-        scaler = StandardScaler()
-        scaled_data = scaler.fit_transform(data)
-        return pd.DataFrame(scaled_data, columns=data.columns)
+        logger.info(f"transforming data using standard scaler")
+        try: 
+            scaler = StandardScaler()
+            scaled_data = scaler.fit_transform(data)
+            logger.info(f"Successfully transformed data.")
+            return pd.DataFrame(scaled_data, columns=data.columns)
+        except Exception as e:
+            logger.error(f"Error loading data from {file_path}: {e}")
+            raise

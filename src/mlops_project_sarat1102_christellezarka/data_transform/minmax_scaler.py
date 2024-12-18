@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from .base_transformer import DataTransformer
+from loguru import logger
 
 
 class MinMaxScalerTransformer(DataTransformer):
@@ -15,6 +16,12 @@ class MinMaxScalerTransformer(DataTransformer):
         Returns:
             pd.DataFrame: The transformed data with values scaled between 0 and 1.
         """
-        scaler = MinMaxScaler()
-        scaled_data = scaler.fit_transform(data)
-        return pd.DataFrame(scaled_data, columns=data.columns)
+        logger.info(f"transforming data using minmax scaler")
+        try: 
+            scaler = MinMaxScaler()
+            scaled_data = scaler.fit_transform(data)
+            logger.info(f"Successfully transformed data.")
+            return pd.DataFrame(scaled_data, columns=data.columns)
+        except Exception as e:
+            logger.error(f"Error loading data from {file_path}: {e}")
+            raise

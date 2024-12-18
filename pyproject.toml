@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "mlops_project_sarat1102_christellezarka", from = "src"}]
 
 [tool.poetry.dependencies]
-python = ">3.12"
+python = ">3.12,<4.0"
 pandas = "^2.2.3"
 numpy = "^2.2.0"
 scikit-learn = "^1.6.0"
@@ -15,11 +15,13 @@ omegaconf = "^2.3.0"
 pydantic = "^2.10.3"
 pdoc = "^15.0.1"
 stubs = "^1.0.0"
+loguru = "^0.7.3"
 
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.13.0"
 ruff = "^0.8.3"
+pytest = "^8.3.4"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,5 +1,6 @@
 import argparse
 from loguru import logger
+from typing import Dict
 from mlops_project_sarat1102_christellezarka.config import load_config
 from mlops_project_sarat1102_christellezarka.data_loader import DataLoaderFactory
 from mlops_project_sarat1102_christellezarka.data_transform import TransformerFactory
@@ -60,6 +61,17 @@ def main():
     except Exception as e:
         logger.error(f"Model training/prediction failed: {e}")
         return
+
+from fastapi import FastAPI
+
+app = FastAPI(title="ML Data Pipeline API", version="1.0")
+@app.get("/health")
+async def health_check() -> Dict[str, str]:
+    return {"status": "healthy"}
+
 logger.info("Pipeline execution completed successfully.")
+
 if __name__ == "__main__":
-    main()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+

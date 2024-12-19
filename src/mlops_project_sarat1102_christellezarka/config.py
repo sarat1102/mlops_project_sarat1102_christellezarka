@@ -1,4 +1,3 @@
-# src/ml_data_pipeline/config.py
 from pydantic import BaseModel, field_validator, validator
 from omegaconf import OmegaConf
 
@@ -66,9 +65,11 @@ class ModelConfig(BaseModel):
 
     Attributes:
         type (str): The type of the model (linear or tree).
+        params (Dict[str, Any]): Additional parameters for the model.
     """
 
     type: str
+    params: Dict[str, Any] = {}
 
     @field_validator("type")
     def validate_model_type(cls, value: str) -> str:
@@ -81,11 +82,21 @@ class ModelConfig(BaseModel):
             str: The validated model type.
 
         Raises:
-            ValueError: If the model type is not 'linear' or 'tree'.
+            ValueError: If the model type is not 'logistic' or 'svc'.
         """
         if value not in {"logistic", "svc"}:
             raise ValueError("model type must be 'logistic' or 'svc'")
         return value
+    
+
+class MLflowConfig(BaseModel):
+    """Configuration for MLflow.
+    tracking_uri: The URI of the server where MLflow's
+    tracking service is hosted.
+    experiment_name: The name of the MLflow experiment.
+    """
+    tracking_uri: str
+    experiment_name: str
 
 
 class Config(BaseModel):
@@ -95,11 +106,13 @@ class Config(BaseModel):
         data_loader (DataLoaderConfig): Configuration for the data loader.
         transformation (TransformationConfig): Configuration for the data transformer.
         model (ModelConfig): Configuration for the model.
+        mlflow (MLflowConfig): Configuration for the mlflow.
     """
 
     data_loader: DataLoaderConfig
     transformation: TransformationConfig
     model: ModelConfig
+    mlflow: MLflowConfig
 
 
 def load_config(config_path: str) -> Config:

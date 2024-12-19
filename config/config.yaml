@@ -1,3 +1,6 @@
+mlflow:
+    tracking_uri: "http://localhost:5000"
+    experiment_name: "mlops_project_sarat1102_christellezarka_experiments"
 data_loader:
     file_path: "data/loan_data.csv"
     file_type: "csv"

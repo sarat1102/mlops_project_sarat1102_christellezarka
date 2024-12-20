@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from .logistic_model import LogisticRegressionModel
 from .svc_model import SVCModel
 from .base_model import Model

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/803626877762828568/06327ab18b1447028a949c1de0c80051/artifacts
+end_time: 1734731238191
+entry_point_name: ''
+experiment_id: '803626877762828568'
+lifecycle_stage: active
+run_id: 06327ab18b1447028a949c1de0c80051
+run_name: trusting-foal-106
+run_uuid: 06327ab18b1447028a949c1de0c80051
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734731230667
+status: 3
+tags: []
+user_id: user

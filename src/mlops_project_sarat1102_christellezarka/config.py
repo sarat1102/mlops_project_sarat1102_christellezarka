@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from pydantic import BaseModel, field_validator, validator
 from omegaconf import OmegaConf
 
@@ -64,7 +65,7 @@ class ModelConfig(BaseModel):
     """Configuration for the model.
 
     Attributes:
-        type (str): The type of the model (linear or tree).
+        type (str): The type of the model (logistic or svc).
         params (Dict[str, Any]): Additional parameters for the model.
     """
 

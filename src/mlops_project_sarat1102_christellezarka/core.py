@@ -13,11 +13,11 @@ from mlops_project_sarat1102_christellezarka.model.factory import ModelFactory
 
 def load_pipeline(
     transformation_config: TransformationConfig, model_config: ModelConfig
-) -> "InferencePipeline":
+) -> InferencePipeline:
     data_transformer = TransformerFactory.get_transformer(
         transformation_config.scaling_method
     )
-    model = ModelFactory.get_model(model_config)
+    model = ModelFactory.get_model(model_config.type)
     return InferencePipeline(data_transformer, model)
 
 
@@ -49,6 +49,7 @@ class InferencePipeline:
             logger.info("Data transformed successfully.")
 
             logger.info("Running Inference.")
+            
             predictions = self._model.predict(transformed_data)
             logger.debug(f"Predictions: {predictions.head()}")
             logger.info("Model prediction completed successfully.")

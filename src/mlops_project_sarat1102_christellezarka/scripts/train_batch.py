@@ -51,17 +51,17 @@ def main() -> None:
             transformer = TransformerFactory.get_transformer(
                 config.transformation.scaling_method
             )
-            transformed_data = transformer.transform(pre_data)
 
             # Prepare train-test split
-            X = transformed_data.drop(columns=["loan_status"])
-            y = transformed_data["loan_status"]
+            X = pre_data.drop(columns=["loan_status"])
+            y = pre_data["loan_status"]
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=0.2, random_state=42
             )
+            transformed_data = transformer.transform(X)
 
             # Train the model
-            model = ModelFactory.get_model(config.model)
+            model = ModelFactory.get_model(config.model.type)
             model.train(X_train, y_train)
 
             # Evaluate and log metrics

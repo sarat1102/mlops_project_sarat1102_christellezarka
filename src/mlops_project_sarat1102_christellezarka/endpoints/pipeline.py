@@ -5,7 +5,10 @@ from loguru import logger
 from prometheus_client import Counter, Summary
 from pydantic import BaseModel
 
-from mlops_project_sarat1102_christellezarka.config import ModelConfig, TransformationConfig
+from mlops_project_sarat1102_christellezarka.config import (
+    ModelConfig,
+    TransformationConfig,
+)
 from mlops_project_sarat1102_christellezarka.core import load_pipeline
 
 # Prometheus Metrics
@@ -39,6 +42,7 @@ MODEL_CONFIG = ModelConfig(type="logistic")
 logger.info("Loading pipeline")
 pipeline_endpoint = load_pipeline(TRANSFORMATION_CONFIG, MODEL_CONFIG)
 logger.info("successfully loaded pipeline")
+
 
 @router.post("/predict", response_model=PredictOutput)
 async def predict_endpoint(input_data: PredictInput) -> PredictOutput:

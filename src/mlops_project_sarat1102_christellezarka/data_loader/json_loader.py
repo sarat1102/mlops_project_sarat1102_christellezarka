@@ -17,7 +17,7 @@ class JSONLoader(DataLoader):
             pd.DataFrame: The loaded data as a DataFrame.
         """
         logger.info(f"Loading data from JSON file at {file_path}")
-        try: 
+        try:
             with open(file_path, "r") as file:
                 data = json.load(file)
             logger.info(f"Successfully loaded data from {file_path}")

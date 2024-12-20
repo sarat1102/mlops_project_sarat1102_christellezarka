@@ -5,7 +5,9 @@ from loguru import logger
 
 from mlops_project_sarat1102_christellezarka.config import load_config
 from mlops_project_sarat1102_christellezarka.core import load_pipeline
-from mlops_project_sarat1102_christellezarka.data_loader.factory import DataLoaderFactory
+from mlops_project_sarat1102_christellezarka.data_loader.factory import (
+    DataLoaderFactory,
+)
 
 # Configure loguru to log to a file and console
 logger.add("logs/pipeline.log", rotation="500 MB")  # Log rotation at 500 MB

@@ -3,6 +3,7 @@ import pandas as pd
 from .base_loader import DataLoader
 from loguru import logger
 
+
 class CSVLoader(DataLoader):
     """A data loader for loading CSV files."""
 

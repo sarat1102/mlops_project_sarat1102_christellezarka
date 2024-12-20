@@ -88,16 +88,17 @@ class ModelConfig(BaseModel):
         if value not in {"logistic", "svc"}:
             raise ValueError("model type must be 'logistic' or 'svc'")
         return value
-    
+
 
 class MLflowConfig(BaseModel):
     """Configuration for MLflow.
 
-     Attributes:
-        tracking_uri: The URI of the server where MLflow's
-        tracking service is hosted.
-        experiment_name: The name of the MLflow experiment.
+    Attributes:
+       tracking_uri: The URI of the server where MLflow's
+       tracking service is hosted.
+       experiment_name: The name of the MLflow experiment.
     """
+
     tracking_uri: str
     experiment_name: str
 

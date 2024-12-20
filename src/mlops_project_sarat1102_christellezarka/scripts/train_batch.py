@@ -7,8 +7,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 from mlops_project_sarat1102_christellezarka.config import load_config
-from mlops_project_sarat1102_christellezarka.data_loader.factory import DataLoaderFactory
-from mlops_project_sarat1102_christellezarka.data_transform.factory import TransformerFactory
+from mlops_project_sarat1102_christellezarka.data_loader.factory import (
+    DataLoaderFactory,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.factory import (
+    TransformerFactory,
+)
 from mlops_project_sarat1102_christellezarka.data_transform import DataPreprocessing
 from mlops_project_sarat1102_christellezarka.model.factory import ModelFactory
 
@@ -55,10 +59,11 @@ def main() -> None:
             # Prepare train-test split
             X = pre_data.drop(columns=["loan_status"])
             y = pre_data["loan_status"]
+            X = transformer.transform(X)
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=0.2, random_state=42
             )
-            transformed_data = transformer.transform(X)
+
 
             # Train the model
             model = ModelFactory.get_model(config.model.type)

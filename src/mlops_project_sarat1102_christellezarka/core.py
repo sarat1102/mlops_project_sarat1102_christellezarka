@@ -3,10 +3,19 @@ from __future__ import annotations
 import pandas as pd
 from loguru import logger
 
-from mlops_project_sarat1102_christellezarka.config import ModelConfig, TransformationConfig
-from mlops_project_sarat1102_christellezarka.data_transform.base_transformer import DataTransformer
-from mlops_project_sarat1102_christellezarka.data_transform.factory import TransformerFactory
-from mlops_project_sarat1102_christellezarka.data_transform.data_preprocessing import DataPreprocessing
+from mlops_project_sarat1102_christellezarka.config import (
+    ModelConfig,
+    TransformationConfig,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.base_transformer import (
+    DataTransformer,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.factory import (
+    TransformerFactory,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.data_preprocessing import (
+    DataPreprocessing,
+)
 from mlops_project_sarat1102_christellezarka.model.base_model import Model
 from mlops_project_sarat1102_christellezarka.model.factory import ModelFactory
 
@@ -49,7 +58,7 @@ class InferencePipeline:
             logger.info("Data transformed successfully.")
 
             logger.info("Running Inference.")
-            
+
             predictions = self._model.predict(transformed_data)
             logger.debug(f"Predictions: {predictions.head()}")
             logger.info("Model prediction completed successfully.")

@@ -16,12 +16,12 @@ class MinMaxScalerTransformer(DataTransformer):
         Returns:
             pd.DataFrame: The transformed data with values scaled between 0 and 1.
         """
-        logger.info(f"transforming data using minmax scaler")
-        try: 
+        logger.info("transforming data using minmax scaler")
+        try:
             scaler = MinMaxScaler()
             scaled_data = scaler.fit_transform(data)
-            logger.info(f"Successfully transformed data.")
+            logger.info("Successfully transformed data.")
             return pd.DataFrame(scaled_data, columns=data.columns)
         except Exception as e:
-            logger.error(f"Error loading data from {file_path}: {e}")
+            logger.error(f"Error transforming data {e}")
             raise

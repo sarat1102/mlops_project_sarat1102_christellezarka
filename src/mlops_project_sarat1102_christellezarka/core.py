@@ -64,8 +64,8 @@ class InferencePipeline:
             logger.info("Model prediction completed successfully.")
 
             logger.info("Pipeline execution completed.")
-            return predictions
+            return pd.DataFrame(predictions)
 
         except Exception as e:
             logger.error(f"Failed in Pipeline Execution: {e}")
-            return
+            return pd.DataFrame()

@@ -56,7 +56,7 @@ async def predict_endpoint(input_data: PredictInput) -> PredictOutput:
             input_df = pd.DataFrame(input_data.data)
             logger.info("Input data converted to DataFrame.")
             predictions_df = pipeline_endpoint.run(input_df)
-            return PredictOutput(predictions=predictions_df)
+            return PredictOutput(predictions=list(predictions_df))
         except Exception as e:
             REQUEST_ERRORS.inc()  # Increment error count
             logger.error(f"Error in predict endpoint: {e}")

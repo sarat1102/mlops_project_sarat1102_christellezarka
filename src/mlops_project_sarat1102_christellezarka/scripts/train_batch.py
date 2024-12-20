@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from mlops_project_sarat1102_christellezarka.config import load_config
 from mlops_project_sarat1102_christellezarka.data_loader.factory import DataLoaderFactory
 from mlops_project_sarat1102_christellezarka.data_transform.factory import TransformerFactory
+from mlops_project_sarat1102_christellezarka.data_transform import DataPreprocessing
 from mlops_project_sarat1102_christellezarka.model.factory import ModelFactory
 
 logger.add("logs/training.log", rotation="500 MB")
@@ -46,14 +47,15 @@ def main() -> None:
                 config.data_loader.file_type
             )
             data = data_loader.load_data(config.data_loader.file_path)
+            pre_data = DataPreprocessing.transform(data)
             transformer = TransformerFactory.get_transformer(
                 config.transformation.scaling_method
             )
-            transformed_data = transformer.transform(data)
+            transformed_data = transformer.transform(pre_data)
 
             # Prepare train-test split
-            X = transformed_data.drop(columns=["target"])
-            y = transformed_data["target"]
+            X = transformed_data.drop(columns=["loan_status"])
+            y = transformed_data["loan_status"]
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=0.2, random_state=42
             )

@@ -91,9 +91,11 @@ class ModelConfig(BaseModel):
 
 class MLflowConfig(BaseModel):
     """Configuration for MLflow.
-    tracking_uri: The URI of the server where MLflow's
-    tracking service is hosted.
-    experiment_name: The name of the MLflow experiment.
+
+     Attributes:
+        tracking_uri: The URI of the server where MLflow's
+        tracking service is hosted.
+        experiment_name: The name of the MLflow experiment.
     """
     tracking_uri: str
     experiment_name: str

@@ -3,11 +3,12 @@ from __future__ import annotations
 import pandas as pd
 from loguru import logger
 
-from config import ModelConfig, TransformationConfig
-from data_transform.base_transformer import DataTransformer
-from data_transform.factory import TransformerFactory
-from model.base_model import Model
-from model.factory import ModelFactory
+from mlops_project_sarat1102_christellezarka.config import ModelConfig, TransformationConfig
+from mlops_project_sarat1102_christellezarka.data_transform.base_transformer import DataTransformer
+from mlops_project_sarat1102_christellezarka.data_transform.factory import TransformerFactory
+from mlops_project_sarat1102_christellezarka.data_transform.data_preprocessing import DataPreprocessing
+from mlops_project_sarat1102_christellezarka.model.base_model import Model
+from mlops_project_sarat1102_christellezarka.model.factory import ModelFactory
 
 
 def load_pipeline(
@@ -42,7 +43,8 @@ class InferencePipeline:
             logger.info("Pipeline execution started.")
 
             logger.info("Applying Data transformation.")
-            transformed_data = self._data_transformer.transform(data)
+            pre_data = DataPreprocessing.transform(data)
+            transformed_data = self._data_transformer.transform(pre_data)
             logger.debug(f"Data: {transformed_data.head()}")
             logger.info("Data transformed successfully.")
 

@@ -12,9 +12,6 @@ on: # Defines the events that trigger the workflow
 jobs:
   test: # Name of the job
     runs-on: ubuntu-latest # Specifies the operating system to run the job
-    defaults:
-      run:
-        working-directory: ./mlops_project_sarat1102_christellezarka # Step specific to this project
 
     steps:
       - name: Checkout code # Step to clone the repository

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/803626877762828568/2b6dee5b373341189e03dca15db28335/artifacts
+end_time: 1734731639347
+entry_point_name: ''
+experiment_id: '803626877762828568'
+lifecycle_stage: active
+run_id: 2b6dee5b373341189e03dca15db28335
+run_name: legendary-snake-268
+run_uuid: 2b6dee5b373341189e03dca15db28335
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734731407897
+status: 3
+tags: []
+user_id: user

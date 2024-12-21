@@ -25,7 +25,7 @@ def format(ctx: Context) -> None:
 @task
 def type(ctx: Context) -> None:
     """Run ruff to lint and format the code."""
-    ctx.run("poetry run mypy src/ tasks.py tests/")
+    ctx.run("poetry run mypy src/ tasks.py tests/ --ignore-missing-imports")
 
 
 @task

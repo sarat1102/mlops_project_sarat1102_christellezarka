@@ -3,6 +3,7 @@ from .base_model import Model
 from sklearn.svm import SVC
 from loguru import logger
 
+
 class SVCModel(Model):
     """A svc model for training and prediction."""
 
@@ -24,12 +25,11 @@ class SVCModel(Model):
             y(pd.Series): A pandas Series containing the labels of the training data.
         """
         logger.info("Training svc model")
-        try: 
+        try:
             self.model.fit(X, y)
             logger.info("Training completed successfully.")
         except Exception as e:
             logger.error("Error during model training: {}", e)
-
 
     def predict(self, X: pd.DataFrame) -> pd.Series:
         """
@@ -39,7 +39,11 @@ class SVCModel(Model):
         Returns:
             pd.Series: A Series with model predictions.
         """
-        logger.info("Making predictions on data with {} samples and {} features", X.shape[0], X.shape[1])
+        logger.info(
+            "Making predictions on data with {} samples and {} features",
+            X.shape[0],
+            X.shape[1],
+        )
         try:
             predictions = self.model.predict(X)
             logger.info("Predictions completed")
@@ -47,4 +51,3 @@ class SVCModel(Model):
         except Exception as e:
             logger.error("Error during prediction: {}", e)
             raise
-

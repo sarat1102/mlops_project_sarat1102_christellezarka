@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/803626877762828568/adf07729b9af4df987597f34558298e3/artifacts
+end_time: 1734704921668
+entry_point_name: ''
+experiment_id: '803626877762828568'
+lifecycle_stage: active
+run_id: adf07729b9af4df987597f34558298e3
+run_name: whimsical-shark-34
+run_uuid: adf07729b9af4df987597f34558298e3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734704921111
+status: 4
+tags: []
+user_id: user

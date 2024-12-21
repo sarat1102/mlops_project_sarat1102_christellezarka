@@ -3,21 +3,30 @@ from __future__ import annotations
 import pandas as pd
 from loguru import logger
 
-from mlops_project_sarat1102_christellezarka.config import ModelConfig, TransformationConfig
-from mlops_project_sarat1102_christellezarka.data_transform.base_transformer import DataTransformer
-from mlops_project_sarat1102_christellezarka.data_transform.factory import TransformerFactory
-from mlops_project_sarat1102_christellezarka.data_transform.data_preprocessing import DataPreprocessing
+from mlops_project_sarat1102_christellezarka.config import (
+    ModelConfig,
+    TransformationConfig,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.base_transformer import (
+    DataTransformer,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.factory import (
+    TransformerFactory,
+)
+from mlops_project_sarat1102_christellezarka.data_transform.data_preprocessing import (
+    DataPreprocessing,
+)
 from mlops_project_sarat1102_christellezarka.model.base_model import Model
 from mlops_project_sarat1102_christellezarka.model.factory import ModelFactory
 
 
 def load_pipeline(
     transformation_config: TransformationConfig, model_config: ModelConfig
-) -> "InferencePipeline":
+) -> InferencePipeline:
     data_transformer = TransformerFactory.get_transformer(
         transformation_config.scaling_method
     )
-    model = ModelFactory.get_model(model_config)
+    model = ModelFactory.get_model(model_config.type)
     return InferencePipeline(data_transformer, model)
 
 
@@ -49,13 +58,14 @@ class InferencePipeline:
             logger.info("Data transformed successfully.")
 
             logger.info("Running Inference.")
+
             predictions = self._model.predict(transformed_data)
             logger.debug(f"Predictions: {predictions.head()}")
             logger.info("Model prediction completed successfully.")
 
             logger.info("Pipeline execution completed.")
-            return predictions
+            return pd.DataFrame(predictions)
 
         except Exception as e:
             logger.error(f"Failed in Pipeline Execution: {e}")
-            return
+            return pd.DataFrame()

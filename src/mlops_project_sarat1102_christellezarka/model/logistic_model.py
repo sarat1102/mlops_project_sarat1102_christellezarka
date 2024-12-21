@@ -25,7 +25,7 @@ class LogisticRegressionModel(Model):
             y(pd.Series): A pandas Series containing the labels of the training data.
         """
         logger.info("Training logistic model")
-        try: 
+        try:
             self.model.fit(X, y)
             logger.info("Training completed successfully.")
         except Exception as e:
@@ -39,7 +39,11 @@ class LogisticRegressionModel(Model):
         Returns:
             pd.Series: A Series with model predictions.
         """
-        logger.info("Making predictions on data with {} samples and {} features", X.shape[0], X.shape[1])
+        logger.info(
+            "Making predictions on data with {} samples and {} features",
+            X.shape[0],
+            X.shape[1],
+        )
         try:
             predictions = self.model.predict(X)
             logger.info("Predictions completed")

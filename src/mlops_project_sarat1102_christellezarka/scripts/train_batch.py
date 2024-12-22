@@ -63,7 +63,7 @@ def main() -> None:
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=0.2, random_state=42
             )
-
+            logger.debug(f"columns:{X.columns}")
 
             # Train the model
             model = ModelFactory.get_model(config.model.type)

@@ -35,9 +35,10 @@ class PredictOutput(BaseModel):
 # Create a router instance
 router = APIRouter()
 
+
 # Instantiate the Pipeline With Default Configuration
 TRANSFORMATION_CONFIG = TransformationConfig(scaling_method="standard", normalize=True)
-MODEL_CONFIG = ModelConfig(type="logistic")
+MODEL_CONFIG = ModelConfig(type="logistic", params={})
 
 logger.info("Loading pipeline")
 pipeline_endpoint = load_pipeline(TRANSFORMATION_CONFIG, MODEL_CONFIG)

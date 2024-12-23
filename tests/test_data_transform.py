@@ -9,10 +9,12 @@ from mlops_project_sarat1102_christellezarka.data_transform import DataPreproces
 def sample_data():
     return pd.DataFrame({"feature1": [1, 2, 3], "feature2": [4, 5, 6]})
 
+
 def test_datapreprocessing(sample_data):
     pre_data = DataPreprocessing.transform(sample_data)
     assert not pre_data.isnull().any().any()
     assert pre_data.select_dtypes(include=["object", "category"]).empty
+
 
 def test_standard_scaler_transform(sample_data):
     transformer = TransformerFactory.get_transformer("standard")
